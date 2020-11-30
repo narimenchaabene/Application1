@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Add Person</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+
+        <p style="color: #008B8B;font-size:250%;font-weight:bold;text-align: center;">Create Student</p>
+      
+      <!--  
+         In Thymeleaf the equivalent of
+         JSP's ${pageContext.request.contextPath}/edit.html
+         would be @{/edit.html}         
+         -->
+          
+      <form th:action="@{/addPerson}"
+         th:object="${personForm}" method="POST">
+         <h4>First Name:</h4>
+         <input type="text" th:field="*{firstName}" class="form-control" />    
+         <br/>
+        <h4> Last Name:</h4>
+         <input type="text" th:field="*{lastName}" class="form-control"/>     
+         <br/>
+         <input type="submit" value="Create" class="btn btn-success"/>
+      </form>
+       
+      <br/>
+       
+      <!-- Check if errorMessage is not null and not empty -->
+       
+      <div th:if="${errorMessage}" th:utext="${errorMessage}"
+         style="color:red;font-style:italic;">
+        
+      </div>
+       
+   </body>
+</html>
